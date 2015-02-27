@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>DOM Ancestors</title>
+    <link href="bower_components/reset-css/reset.css" rel="stylesheet" >
+    <style media="screen">
+      main, section, article, ul, li {
+        background: rgba(200, 200, 200, 0.5);
+        border: 1px solid rgba(150, 150, 150, 0.5);
+        padding: .5em;
+        margin: .5em;
+      }
+
+      footer {
+        margin: .5em;
+        padding: .5em;
+        background: rgba(200, 200, 200, 0.5);
+        border: 1px solid rgba(150, 150, 150, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+
+    <main>
+      I'm main.
+      <section>
+        I'm a section.
+        <article>
+          I'm an article.
+          <ul>
+            <li>I'm an li</li>
+            <li>I'm another li</li>
+            <li>I'm a third li</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+      var printName = function (node) {
+        var el = document.createElement('p');
+        el.innerHTML = node.nodeName;
+        document.getElementsByTagName('footer')[0].appendChild(el);
+      }
+
+      document.getElementsByTagName('main')[0].addEventListener('click', function (e) {
+        var node = e.target;
+        printName(node);
+
+        // e.target is the element you clicked on
+        // write code to go through all the parents
+        // and call printName on each parent node
+      });
+    </script>
+  </body>
+</html>
