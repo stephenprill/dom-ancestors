@@ -42,13 +42,20 @@
     </footer>
 
     <script>
+      var clearFooter = function () {
+        Array.prototype.forEach.call(document.getElementsByTagName('footer')[0].childNodes, function (n) {
+          document.getElementsByTagName('footer')[0].removeChild(n);
+        });
+      };
+
       var printName = function (node) {
         var el = document.createElement('p');
         el.innerHTML = node.nodeName;
         document.getElementsByTagName('footer')[0].appendChild(el);
-      }
+      };
 
       document.getElementsByTagName('main')[0].addEventListener('click', function (e) {
+        clearFooter();
         var node = e.target;
         printName(node);
 
